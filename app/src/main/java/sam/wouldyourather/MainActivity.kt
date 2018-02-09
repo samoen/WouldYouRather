@@ -7,20 +7,20 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    val TYPES_OF_GOOD_EXPERIENCES = 3 // You can win things, get things, meet people
-    val TYPES_OF_BAD_EXPERIENCES = 3 // be denied use of things, hit by things, forced to eat things
+    val typesOfGoodExperiences = 3 // You can win things, get things, meet people
+    val typesOfBadExperiences = 3 // be denied use of things, hit by things, forced to eat things
     val thingsYouWin = arrayOf("a chess tournament","the superbowl","a marathon","an olympic event")
-    val winWords = listOf("win","are victorious in","are the winner of","place second in")
+    val winWords = arrayOf("win","are victorious in","are the winner of","place second in")
     val thingsYouReceive = arrayOf("two thousand dollars","a new car","one million youtube subscribers","a house in beverly hills")
-    val receiveWords = listOf("receive","get","collect","are the proud new owner of")
+    val receiveWords = arrayOf("receive","get","collect","are the proud new owner of")
     val thingsYouMeet = arrayOf("Obama","God","Einstein","Ghandi")
-    val meetWords = listOf("meet","have lunch with","talk to","chat with")
+    val meetWords = arrayOf("meet","have lunch with","talk to","chat with")
     val thingsYouCantUse = arrayOf("phone","computer","bed","shoes")
-    val useWords = listOf("use","touch","look at","see")
+    val useWords = arrayOf("use","touch","look at","see")
     val thingsYouGetHitBy = arrayOf("a boat","an elephant","a speeding bicycle","a big dude")
-    val hitWords = listOf("hit","smacked","banged","bashed")
+    val hitWords = arrayOf("hit","smacked","banged","bashed")
     val thingsYouMustEat = arrayOf("a bowl of manure","a fidget spinner","someone's finger","a rotten egg")
-    val eatWords = listOf("eat","consume","swallow","snort")
+    val eatWords = arrayOf("eat","consume","swallow","snort")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     fun GenerateGoodScenario():Scenario{
         val random = Random()
-        val goodThingType = random.nextInt(TYPES_OF_GOOD_EXPERIENCES)
+        val goodThingType = random.nextInt(typesOfGoodExperiences)
         when(goodThingType){
             0->{
                 val innerOption = random.nextInt(thingsYouWin.size)
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     fun GenerateBadScenario():Scenario{
         val random = Random()
-        val badThingType = random.nextInt(TYPES_OF_BAD_EXPERIENCES)
+        val badThingType = random.nextInt(typesOfBadExperiences)
         when(badThingType){
             0->{
                 val innerOption = random.nextInt(thingsYouCantUse.size)
