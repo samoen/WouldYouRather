@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     val thingsYouMeet = arrayOf("Elon Musk","God","Einstein")
     val thingsYouCantUse = arrayOf("phone","computer","bed")
     val thingsYouHitBy = arrayOf("a car","an elephant","a bicycle")
-    val thingsYouMustConsume = arrayOf("bowl of manure","glass of lemon juice","finger")
+    val thingsYouMustEat = arrayOf("a bowl of manure","a fidget spinner","someone's finger")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,12 +59,15 @@ class MainActivity : AppCompatActivity() {
         val r = Random()
         val n = r.nextInt(maxBadTypes)
         when(n){
-            0-> {
+            0 -> {
                 val useWords = listOf("use","touch","look at")
                 return Scenario("can't ${useWords[r.nextInt(useWords.size)]} your ${thingsYouCantUse[r.nextInt(thingsYouCantUse.size)]}",n)
             }
-            1-> return Scenario("must consume a ${thingsYouMustConsume[r.nextInt(thingsYouMustConsume.size)]}",n)
-            2->{
+            1 -> {
+                val eatWords = listOf("eat","consume","swallow")
+                return Scenario("must ${eatWords[r.nextInt(eatWords.size)]} ${thingsYouMustEat[r.nextInt(thingsYouMustEat.size)]}",n)
+            }
+            2 -> {
                 val hitWords = listOf("hit","smacked","banged")
                 return Scenario("get ${hitWords[r.nextInt(hitWords.size)]} by ${thingsYouHitBy[r.nextInt(thingsYouHitBy.size)]}",n)
             }
