@@ -6,27 +6,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-
-    val goodThings = arrayListOf<String>(
-            "Get $1000 cash",
-            "Throw the best party ever",
-            "Have magic hard drive with every movie on it",
-            "Get a free car",
-            "Own 10 lemon trees",
-            "Gain a million subscribers",
-            "Choose a software platform and build a career"
-    )
-
-    val badThings = arrayListOf<String>(
-            "fall off a cliff",
-            "get hit by a bicycle",
-            "must eat manure",
-            "must drink a glass of lemon juice",
-            "step on a nail",
-            "lose all your subscribers",
-            "fall into the trap of cross-platform development"
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,19 +13,55 @@ class MainActivity : AppCompatActivity() {
         bottombutton.setOnClickListener { ShowNextQuestion() }
         ShowNextQuestion()
     }
-
     fun ShowNextQuestion(){
-        val topGoodRandom = Random().nextInt(goodThings.size)
-        val topBadRandom = Random().nextInt(badThings.size)
-        var BottomGoodRandom = Random().nextInt(goodThings.size)
-        var BottomBadRandom = Random().nextInt(badThings.size)
-        while (topGoodRandom == BottomGoodRandom){
-            BottomGoodRandom = Random().nextInt(goodThings.size)
+        val q = Question()
+        val topGoodString = q.GetRandomGoodQuestion()
+        val topBadString = q.GetRandomBadQuestion()
+        var bottomGoodString = q.GetRandomGoodQuestion()
+        var bottomBadString = q.GetRandomBadQuestion()
+        while (topGoodString == bottomGoodString){
+            bottomGoodString = q.GetRandomGoodQuestion()
         }
-        while(BottomBadRandom == topBadRandom){
-            BottomBadRandom = Random().nextInt(badThings.size)
+        while (topBadString == bottomBadString){
+            bottomBadString = q.GetRandomBadQuestion()
         }
-        topbutton.text = "${goodThings[topGoodRandom]}, but you ${badThings[topBadRandom]}"
-        bottombutton.text = "${goodThings[BottomGoodRandom]}, but you ${badThings[BottomBadRandom]}"
+        topbutton.text = "You $topGoodString, but you $topBadString"
+        bottombutton.text = "You $bottomGoodString, but you $bottomBadString"
+    }
+
+    enum class GoodThingType { WINNING, GETTING, MEETING }
+
+    enum class BadThingType { CANTUSE, HITBY, MUSTCONSUME }
+
+    class Question{
+        val thingsYouWin = arrayOf("trophy","basketball game","marathon")
+        val thingsYouGet = arrayOf("1000 bucks","a car","a million subs")
+        val thingsYouMeet = arrayOf("Elon Musk","God","Einstein")
+        val thingsYouCantUse = arrayOf("phone","computer","bed")
+        val thingsYouHitBy = arrayOf("car","elephant","bicycle")
+        val thingsYouMustConsume = arrayOf("bowl of manure","glass of lemon juice","finger")
+        fun GetRandomGoodQuestion():String{
+            val r = Random()
+            val n = r.nextInt(GoodThingType.values().size)
+            val type = GoodThingType.values()[n]
+            when(type){
+                GoodThingType.WINNING-> return "win a ${thingsYouWin[r.nextInt(thingsYouWin.size)]}"
+                GoodThingType.MEETING-> return "meet ${thingsYouMeet[r.nextInt(thingsYouMeet.size)]}"
+                GoodThingType.GETTING-> return "get ${thingsYouGet[r.nextInt(thingsYouGet.size)]}"
+            }
+        }
+        fun GetRandomBadQuestion():String{
+            val r = Random()
+            val n = r.nextInt(BadThingType.values().size)
+            val type = BadThingType.values()[n]
+            when(type){
+                BadThingType.CANTUSE-> return "can't use your ${thingsYouCantUse[r.nextInt(thingsYouCantUse.size)]}"
+                BadThingType.MUSTCONSUME-> return "must consume a ${thingsYouMustConsume[r.nextInt(thingsYouMustConsume.size)]}"
+                BadThingType.HITBY->{
+                    val hitWords = listOf("hit","smacked","banged")
+                    return "get ${hitWords[r.nextInt(hitWords.size)]} by a ${thingsYouHitBy[r.nextInt(thingsYouHitBy.size)]}"
+                }
+            }
+        }
     }
 }
