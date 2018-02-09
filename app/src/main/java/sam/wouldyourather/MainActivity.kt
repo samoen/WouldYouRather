@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     val thingsYouGet = arrayOf("1000 bucks","a car","a million subs")
     val thingsYouMeet = arrayOf("Elon Musk","God","Einstein")
     val thingsYouCantUse = arrayOf("phone","computer","bed")
-    val thingsYouHitBy = arrayOf("a car","an elephant","a bicycle")
+    val thingsYouGetHitBy = arrayOf("a car","an elephant","a bicycle")
     val thingsYouMustEat = arrayOf("a bowl of manure","a fidget spinner","someone's finger")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,44 +42,44 @@ class MainActivity : AppCompatActivity() {
     class Scenario(var scenarioString:String="", var scenarioIdentifier:String="")
 
     fun GenerateGoodScenario():Scenario{
-        val r = Random()
-        val n = r.nextInt(maxGoodTypes)
-        when(n){
+        val random = Random()
+        val goodTypeKey = random.nextInt(maxGoodTypes)
+        when(goodTypeKey){
             0-> {
                 val winWords = listOf("win","are victorious in","are the winner of")
-                val num = r.nextInt(thingsYouWin.size)
-                return Scenario("${winWords[r.nextInt(winWords.size)]} ${thingsYouWin[num]}",num.toString()+n.toString())
+                val thingKey = random.nextInt(thingsYouWin.size)
+                return Scenario("${winWords[random.nextInt(winWords.size)]} ${thingsYouWin[thingKey]}",thingKey.toString()+goodTypeKey.toString())
             }
             1-> {
-                val num = r.nextInt(thingsYouMeet.size)
-                return Scenario("meet ${thingsYouMeet[num]}",num.toString()+n.toString())
+                val thingKey = random.nextInt(thingsYouMeet.size)
+                return Scenario("meet ${thingsYouMeet[thingKey]}",thingKey.toString()+goodTypeKey.toString())
             }
             2-> {
-                val num = r.nextInt(thingsYouGet.size)
-                return Scenario("get ${thingsYouGet[num]}",num.toString()+n.toString())
+                val thingKey = random.nextInt(thingsYouGet.size)
+                return Scenario("get ${thingsYouGet[thingKey]}",thingKey.toString()+goodTypeKey.toString())
             }
             else->return Scenario()
         }
     }
 
     fun GenerateBadScenario():Scenario{
-        val r = Random()
-        val n = r.nextInt(maxBadTypes)
-        when(n){
+        val random = Random()
+        val badTypeKey = random.nextInt(maxBadTypes)
+        when(badTypeKey){
             0 -> {
                 val useWords = listOf("use","touch","look at")
-                val num = r.nextInt(thingsYouCantUse.size)
-                return Scenario("can't ${useWords[r.nextInt(useWords.size)]} your ${thingsYouCantUse[num]}",num.toString()+n.toString())
+                val thingKey = random.nextInt(thingsYouCantUse.size)
+                return Scenario("can't ${useWords[random.nextInt(useWords.size)]} your ${thingsYouCantUse[thingKey]}",thingKey.toString()+badTypeKey.toString())
             }
             1 -> {
                 val eatWords = listOf("eat","consume","swallow")
-                val num = r.nextInt(thingsYouMustEat.size)
-                return Scenario("must ${eatWords[r.nextInt(eatWords.size)]} ${thingsYouMustEat[r.nextInt(thingsYouMustEat.size)]}",num.toString()+n.toString())
+                val thingKey = random.nextInt(thingsYouMustEat.size)
+                return Scenario("must ${eatWords[random.nextInt(eatWords.size)]} ${thingsYouMustEat[thingKey]}",thingKey.toString()+badTypeKey.toString())
             }
             2 -> {
                 val hitWords = listOf("hit","smacked","banged")
-                val num = r.nextInt(thingsYouHitBy.size)
-                return Scenario("get ${hitWords[r.nextInt(hitWords.size)]} by ${thingsYouHitBy[r.nextInt(thingsYouHitBy.size)]}",num.toString()+n.toString())
+                val thingKey = random.nextInt(thingsYouGetHitBy.size)
+                return Scenario("get ${hitWords[random.nextInt(hitWords.size)]} by ${thingsYouGetHitBy[thingKey]}",thingKey.toString()+badTypeKey.toString())
             }
             else->return Scenario()
         }
