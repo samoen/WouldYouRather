@@ -9,11 +9,11 @@ class MainActivity : AppCompatActivity() {
 
     val maxGoodTypes = 3
     val maxBadTypes = 3
-    val thingsYouWin = arrayOf("trophy","basketball game","marathon")
+    val thingsYouWin = arrayOf("a battle","the superbowl","a marathon")
     val thingsYouGet = arrayOf("1000 bucks","a car","a million subs")
     val thingsYouMeet = arrayOf("Elon Musk","God","Einstein")
     val thingsYouCantUse = arrayOf("phone","computer","bed")
-    val thingsYouHitBy = arrayOf("car","elephant","bicycle")
+    val thingsYouHitBy = arrayOf("a car","an elephant","a bicycle")
     val thingsYouMustConsume = arrayOf("bowl of manure","glass of lemon juice","finger")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,38 +29,46 @@ class MainActivity : AppCompatActivity() {
         val topBad = GenerateBadScenario()
         var bottomGood = GenerateGoodScenario()
         var bottomBad = GenerateBadScenario()
-        while (topGood == bottomGood){
+        while (topGood.scenarioNumber.equals(bottomGood.scenarioNumber)){
             bottomGood = GenerateGoodScenario()
         }
-        while (topBad == bottomBad){
+        while (topBad.scenarioNumber.equals(bottomBad.scenarioNumber)){
             bottomBad = GenerateBadScenario()
         }
-        topbutton.text = "You $topGood, but you $topBad"
-        bottombutton.text = "You $bottomGood, but you $bottomBad"
+        topbutton.text = "You ${topGood.scenarioString}, but you ${topBad.scenarioString}"
+        bottombutton.text = "You ${bottomGood.scenarioString}, but you ${bottomBad.scenarioString}"
     }
 
-    fun GenerateGoodScenario():String{
+    class Scenario(var scenarioString:String="", var scenarioNumber:Int=0)
+
+    fun GenerateGoodScenario():Scenario{
         val r = Random()
         val n = r.nextInt(maxGoodTypes)
         when(n){
-            0-> return "win a ${thingsYouWin[r.nextInt(thingsYouWin.size)]}"
-            1-> return "meet ${thingsYouMeet[r.nextInt(thingsYouMeet.size)]}"
-            2-> return "get ${thingsYouGet[r.nextInt(thingsYouGet.size)]}"
-            else->return "error"
+            0-> {
+                val winWords = listOf("win","are victorious in","are the winner of")
+                return Scenario("${winWords[r.nextInt(winWords.size)]} ${thingsYouWin[r.nextInt(thingsYouWin.size)]}",n)
+            }
+            1-> return Scenario("meet ${thingsYouMeet[r.nextInt(thingsYouMeet.size)]}",n)
+            2-> return Scenario("get ${thingsYouGet[r.nextInt(thingsYouGet.size)]}",n)
+            else->return Scenario()
         }
     }
 
-    fun GenerateBadScenario():String{
+    fun GenerateBadScenario():Scenario{
         val r = Random()
         val n = r.nextInt(maxBadTypes)
         when(n){
-            0-> return "can't use your ${thingsYouCantUse[r.nextInt(thingsYouCantUse.size)]}"
-            1-> return "must consume a ${thingsYouMustConsume[r.nextInt(thingsYouMustConsume.size)]}"
+            0-> {
+                val useWords = listOf("use","touch","look at")
+                return Scenario("can't ${useWords[r.nextInt(useWords.size)]} your ${thingsYouCantUse[r.nextInt(thingsYouCantUse.size)]}",n)
+            }
+            1-> return Scenario("must consume a ${thingsYouMustConsume[r.nextInt(thingsYouMustConsume.size)]}",n)
             2->{
                 val hitWords = listOf("hit","smacked","banged")
-                return "get ${hitWords[r.nextInt(hitWords.size)]} by a ${thingsYouHitBy[r.nextInt(thingsYouHitBy.size)]}"
+                return Scenario("get ${hitWords[r.nextInt(hitWords.size)]} by ${thingsYouHitBy[r.nextInt(thingsYouHitBy.size)]}",n)
             }
-            else->return "error"
+            else->return Scenario()
         }
     }
 }

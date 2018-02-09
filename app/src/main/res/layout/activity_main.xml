@@ -9,20 +9,24 @@
     <Button
         android:id="@+id/topbutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@color/colorAccent"
-        android:text="Button"
+        android:text="text goes here"
         android:textAllCaps="false"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"/>
 
     <Button
         android:id="@+id/bottombutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@color/colorPrimaryDark"
-        android:text="Button"
+        android:text="text goes here"
         android:textAllCaps="false"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"/>
 </LinearLayout>
