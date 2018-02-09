@@ -8,10 +8,10 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     val TYPES_OF_GOOD_EXPERIENCES = 3 // You can win things, get things, meet people
-    val TYPES_OF_BAD_EXPERIENCES = 3 // You can be denied use of things, get hit by things, and be forced to eat things
+    val TYPES_OF_BAD_EXPERIENCES = 3 // be denied use of things, hit by things, forced to eat things
     val thingsYouWin = arrayOf("a chess tournament","the superbowl","a marathon","an olympic event")
     val winWords = listOf("win","are victorious in","are the winner of","place second in")
-    val thingsYouGet = arrayOf("two thousand dollars","a new car","one million youtube subscibers","a house in beverly hills")
+    val thingsYouGet = arrayOf("two thousand dollars","a new car","one million youtube subscribers","a house in beverly hills")
     val receiveWords = listOf("receive","get","collect","are the proud new owner of")
     val thingsYouMeet = arrayOf("Obama","God","Einstein","Ghandi")
     val meetWords = listOf("meet","have lunch with","talk to","chat with")
@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
         val topBad = GenerateBadScenario()
         var bottomGood = GenerateGoodScenario()
         var bottomBad = GenerateBadScenario()
-        while (topGood.scenarioIdentifier.equals(bottomGood.scenarioIdentifier)){ // these checks prevent duplicate scenarios..
+        while (topGood.scenarioIdentifier.equals(bottomGood.scenarioIdentifier)){ // these checks prevent duplicate scenarios
             bottomGood = GenerateGoodScenario()
         }
-        while (topBad.scenarioIdentifier.equals(bottomBad.scenarioIdentifier)){ // ..they become less unlikely to trigger as more things are added
+        while (topBad.scenarioIdentifier.equals(bottomBad.scenarioIdentifier)){ // they become less unlikely as more things are added
             bottomBad = GenerateBadScenario()
         }
         topbutton.text = "You ${topGood.scenarioString}, but you ${topBad.scenarioString}"
