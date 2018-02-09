@@ -29,17 +29,17 @@ class MainActivity : AppCompatActivity() {
         val topBad = GenerateBadScenario()
         var bottomGood = GenerateGoodScenario()
         var bottomBad = GenerateBadScenario()
-        while (topGood.scenarioNumber.equals(bottomGood.scenarioNumber)){
+        while (topGood.scenarioIdentifier.equals(bottomGood.scenarioIdentifier)){
             bottomGood = GenerateGoodScenario()
         }
-        while (topBad.scenarioNumber.equals(bottomBad.scenarioNumber)){
+        while (topBad.scenarioIdentifier.equals(bottomBad.scenarioIdentifier)){
             bottomBad = GenerateBadScenario()
         }
         topbutton.text = "You ${topGood.scenarioString}, but you ${topBad.scenarioString}"
         bottombutton.text = "You ${bottomGood.scenarioString}, but you ${bottomBad.scenarioString}"
     }
 
-    class Scenario(var scenarioString:String="", var scenarioNumber:Int=0)
+    class Scenario(var scenarioString:String="", var scenarioIdentifier:String="")
 
     fun GenerateGoodScenario():Scenario{
         val r = Random()
@@ -47,10 +47,17 @@ class MainActivity : AppCompatActivity() {
         when(n){
             0-> {
                 val winWords = listOf("win","are victorious in","are the winner of")
-                return Scenario("${winWords[r.nextInt(winWords.size)]} ${thingsYouWin[r.nextInt(thingsYouWin.size)]}",n)
+                val num = r.nextInt(thingsYouWin.size)
+                return Scenario("${winWords[r.nextInt(winWords.size)]} ${thingsYouWin[num]}",num.toString()+n.toString())
             }
-            1-> return Scenario("meet ${thingsYouMeet[r.nextInt(thingsYouMeet.size)]}",n)
-            2-> return Scenario("get ${thingsYouGet[r.nextInt(thingsYouGet.size)]}",n)
+            1-> {
+                val num = r.nextInt(thingsYouMeet.size)
+                return Scenario("meet ${thingsYouMeet[num]}",num.toString()+n.toString())
+            }
+            2-> {
+                val num = r.nextInt(thingsYouGet.size)
+                return Scenario("get ${thingsYouGet[num]}",num.toString()+n.toString())
+            }
             else->return Scenario()
         }
     }
@@ -61,15 +68,18 @@ class MainActivity : AppCompatActivity() {
         when(n){
             0 -> {
                 val useWords = listOf("use","touch","look at")
-                return Scenario("can't ${useWords[r.nextInt(useWords.size)]} your ${thingsYouCantUse[r.nextInt(thingsYouCantUse.size)]}",n)
+                val num = r.nextInt(thingsYouCantUse.size)
+                return Scenario("can't ${useWords[r.nextInt(useWords.size)]} your ${thingsYouCantUse[num]}",num.toString()+n.toString())
             }
             1 -> {
                 val eatWords = listOf("eat","consume","swallow")
-                return Scenario("must ${eatWords[r.nextInt(eatWords.size)]} ${thingsYouMustEat[r.nextInt(thingsYouMustEat.size)]}",n)
+                val num = r.nextInt(thingsYouMustEat.size)
+                return Scenario("must ${eatWords[r.nextInt(eatWords.size)]} ${thingsYouMustEat[r.nextInt(thingsYouMustEat.size)]}",num.toString()+n.toString())
             }
             2 -> {
                 val hitWords = listOf("hit","smacked","banged")
-                return Scenario("get ${hitWords[r.nextInt(hitWords.size)]} by ${thingsYouHitBy[r.nextInt(thingsYouHitBy.size)]}",n)
+                val num = r.nextInt(thingsYouHitBy.size)
+                return Scenario("get ${hitWords[r.nextInt(hitWords.size)]} by ${thingsYouHitBy[r.nextInt(thingsYouHitBy.size)]}",num.toString()+n.toString())
             }
             else->return Scenario()
         }
