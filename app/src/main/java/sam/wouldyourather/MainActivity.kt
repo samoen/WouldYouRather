@@ -9,18 +9,18 @@ class MainActivity : AppCompatActivity() {
 
     val maxGoodThingNumber = 3
     val maxBadThingNumber = 3
-    val thingsYouWin = arrayOf("a battle","the superbowl","a marathon","an olympic event")
-    val winWords = listOf("win","are victorious in","are the winner of")
-    val thingsYouGet = arrayOf("1000 bucks","a new car","a million subscibers","a house in beverly hills")
-    val getWords = listOf("get","receive","collect")
+    val thingsYouWin = arrayOf("a chess tournament","the superbowl","a marathon","an olympic event")
+    val winWords = listOf("win","are victorious in","are the winner of","place second in")
+    val thingsYouGet = arrayOf("two thousand dollars","a new car","a million subscibers","a house in beverly hills")
+    val getWords = listOf("get","receive","collect","find")
     val thingsYouMeet = arrayOf("Elon Musk","God","Einstein","Ghandi")
-    val meetWords = listOf("meet","have lunch with","talk to")
-    val thingsYouCantUse = arrayOf("phone","computer","bed","car")
-    val useWords = listOf("use","touch","look at")
-    val thingsYouGetHitBy = arrayOf("a car","an elephant","a bicycle","a big dude")
-    val hitWords = listOf("hit","smacked","banged")
+    val meetWords = listOf("meet","have lunch with","talk to","chat with")
+    val thingsYouCantUse = arrayOf("phone","computer","bed","shoes")
+    val useWords = listOf("use","touch","look at","see")
+    val thingsYouGetHitBy = arrayOf("a boat","an elephant","a speeding bicycle","a big dude")
+    val hitWords = listOf("hit","smacked","banged","bashed")
     val thingsYouMustEat = arrayOf("a bowl of manure","a fidget spinner","someone's finger","a rotten egg")
-    val eatWords = listOf("eat","consume","swallow")
+    val eatWords = listOf("eat","consume","swallow","snort")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
