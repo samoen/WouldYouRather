@@ -11,9 +11,9 @@ class MainActivity : AppCompatActivity() {
     val TYPES_OF_BAD_EXPERIENCES = 3 // You can be denied use of things, get hit by things, and be forced to eat things
     val thingsYouWin = arrayOf("a chess tournament","the superbowl","a marathon","an olympic event")
     val winWords = listOf("win","are victorious in","are the winner of","place second in")
-    val thingsYouGet = arrayOf("two thousand dollars","a new car","a million subscibers","a house in beverly hills")
-    val getWords = listOf("get","receive","collect","inherit")
-    val thingsYouMeet = arrayOf("Elon Musk","God","Einstein","Ghandi")
+    val thingsYouGet = arrayOf("two thousand dollars","a new car","one million youtube subscibers","a house in beverly hills")
+    val receiveWords = listOf("receive","get","collect","are the proud new owner of")
+    val thingsYouMeet = arrayOf("Obama","God","Einstein","Ghandi")
     val meetWords = listOf("meet","have lunch with","talk to","chat with")
     val thingsYouCantUse = arrayOf("phone","computer","bed","shoes")
     val useWords = listOf("use","touch","look at","see")
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             }
             2->{
                 val innerOptionNumber = random.nextInt(thingsYouGet.size)
-                return Scenario("${getWords[random.nextInt(getWords.size)]} ${thingsYouGet[innerOptionNumber]}","${innerOptionNumber} ${goodThingNumber}")
+                return Scenario("${receiveWords[random.nextInt(receiveWords.size)]} ${thingsYouGet[innerOptionNumber]}","${innerOptionNumber} ${goodThingNumber}")
             }
             else->return Scenario()
         }
