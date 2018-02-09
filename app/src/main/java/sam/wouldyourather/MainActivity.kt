@@ -53,15 +53,15 @@ class MainActivity : AppCompatActivity() {
         when(goodThingNumber){
             0->{
                 val innerOptionNumber = random.nextInt(thingsYouWin.size)
-                return Scenario("${winWords[random.nextInt(winWords.size)]} ${thingsYouWin[innerOptionNumber]}","${innerOptionNumber},${goodThingNumber}")
+                return Scenario("${winWords[random.nextInt(winWords.size)]} ${thingsYouWin[innerOptionNumber]}","${innerOptionNumber} ${goodThingNumber}")
             }
             1->{
                 val innerOptionNumber = random.nextInt(thingsYouMeet.size)
-                return Scenario("${meetWords[random.nextInt(meetWords.size)]} ${thingsYouMeet[innerOptionNumber]}","${innerOptionNumber},${goodThingNumber}")
+                return Scenario("${meetWords[random.nextInt(meetWords.size)]} ${thingsYouMeet[innerOptionNumber]}","${innerOptionNumber} ${goodThingNumber}")
             }
             2->{
                 val innerOptionNumber = random.nextInt(thingsYouGet.size)
-                return Scenario("${getWords[random.nextInt(getWords.size)]} ${thingsYouGet[innerOptionNumber]}","${innerOptionNumber},${goodThingNumber}")
+                return Scenario("${getWords[random.nextInt(getWords.size)]} ${thingsYouGet[innerOptionNumber]}","${innerOptionNumber} ${goodThingNumber}")
             }
             else->return Scenario()
         }
@@ -71,17 +71,17 @@ class MainActivity : AppCompatActivity() {
         val random = Random()
         val badThingNumber = random.nextInt(TYPES_OF_BAD_EXPERIENCES)
         when(badThingNumber){
-            0 -> {
+            0->{
                 val innerOptionNumber = random.nextInt(thingsYouCantUse.size)
-                return Scenario("can't ${useWords[random.nextInt(useWords.size)]} your ${thingsYouCantUse[innerOptionNumber]}","${innerOptionNumber},${badThingNumber}")
+                return Scenario("can't ${useWords[random.nextInt(useWords.size)]} your ${thingsYouCantUse[innerOptionNumber]}","${innerOptionNumber} ${badThingNumber}")
             }
-            1 -> {
+            1->{
                 val innerOptionNumber = random.nextInt(thingsYouMustEat.size)
-                return Scenario("must ${eatWords[random.nextInt(eatWords.size)]} ${thingsYouMustEat[innerOptionNumber]}","${innerOptionNumber},${badThingNumber}")
+                return Scenario("must ${eatWords[random.nextInt(eatWords.size)]} ${thingsYouMustEat[innerOptionNumber]}","${innerOptionNumber} ${badThingNumber}")
             }
-            2 -> {
+            2->{
                 val innerOptionNumber = random.nextInt(thingsYouGetHitBy.size)
-                return Scenario("get ${hitWords[random.nextInt(hitWords.size)]} by ${thingsYouGetHitBy[innerOptionNumber]}","${innerOptionNumber},${badThingNumber}")
+                return Scenario("get ${hitWords[random.nextInt(hitWords.size)]} by ${thingsYouGetHitBy[innerOptionNumber]}","${innerOptionNumber} ${badThingNumber}")
             }
             else->return Scenario()
         }
