@@ -9,12 +9,12 @@ class MainActivity : AppCompatActivity() {
 
     val maxGoodTypes = 3
     val maxBadTypes = 3
-    val thingsYouWin = arrayOf("a battle","the superbowl","a marathon")
-    val thingsYouGet = arrayOf("1000 bucks","a car","a million subs")
-    val thingsYouMeet = arrayOf("Elon Musk","God","Einstein")
-    val thingsYouCantUse = arrayOf("phone","computer","bed")
-    val thingsYouGetHitBy = arrayOf("a car","an elephant","a bicycle")
-    val thingsYouMustEat = arrayOf("a bowl of manure","a fidget spinner","someone's finger")
+    val thingsYouWin = arrayOf("a battle","the superbowl","a marathon","an olympic event")
+    val thingsYouGet = arrayOf("1000 bucks","a new car","a million subscibers","a house in beverly hills")
+    val thingsYouMeet = arrayOf("Elon Musk","God","Einstein","Ghandi")
+    val thingsYouCantUse = arrayOf("phone","computer","bed","car")
+    val thingsYouGetHitBy = arrayOf("a car","an elephant","a bicycle","a big dude")
+    val thingsYouMustEat = arrayOf("a bowl of manure","a fidget spinner","someone's finger","a rotten egg")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,12 +51,14 @@ class MainActivity : AppCompatActivity() {
                 return Scenario("${winWords[random.nextInt(winWords.size)]} ${thingsYouWin[thingKey]}",thingKey.toString()+goodTypeKey.toString())
             }
             1-> {
+                val meetWords = listOf("meet","have lunch with","talk to")
                 val thingKey = random.nextInt(thingsYouMeet.size)
-                return Scenario("meet ${thingsYouMeet[thingKey]}",thingKey.toString()+goodTypeKey.toString())
+                return Scenario("${meetWords[random.nextInt(meetWords.size)]} ${thingsYouMeet[thingKey]}",thingKey.toString()+goodTypeKey.toString())
             }
             2-> {
+                val getWords = listOf("get","receive","collect")
                 val thingKey = random.nextInt(thingsYouGet.size)
-                return Scenario("get ${thingsYouGet[thingKey]}",thingKey.toString()+goodTypeKey.toString())
+                return Scenario("${getWords[random.nextInt(getWords.size)]} ${thingsYouGet[thingKey]}",thingKey.toString()+goodTypeKey.toString())
             }
             else->return Scenario()
         }
